@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Adriana Sousa - Product Manager & AI Solutions Architect. Especialista em IA, Big Data e ERPs.">
+    <meta name="theme-color" content="#020617">
+    
+    <!-- Open Graph / Previews para LinkedIn e WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Adriana Sousa | Product & AI Engineer">
+    <meta property="og:description" content="Especialista em transformar dados massivos e processos operacionais complexos em produtos digitais de alta performance.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:url" content="https://www.linkedin.com/in/adriana-sousa-tech/">
+
+    <title>Adriana Sousa | Product & AI Engineer</title>
+    
+    <!-- Preconnects para Alta Performance de Rede -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel para compilar JSX no navegador -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        /* Efeito de vidro (Glassmorphism) para os cartões com Aceleração de GPU */
+        .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.5); will-change: transform, border-color; }
+        .gradient-text { background: linear-gradient(90deg, #38bdf8, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Brilho de fundo no topo */
+        .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80%; height: 500px; background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%); z-index: -1; }
+        /* Animação suave para os cartões com Aceleração de GPU */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.4s ease-out forwards; will-change: transform, opacity; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+
+        // Base de Dados com TODAS as suas criações
+        const allProjects = [
+            // ==========================================
+            // CATEGORIA: IA & BIG DATA
+            // ==========================================
+            {
+                id: 1,
+                title: "The Market Architect v13.1",
+                category: "IA & Big Data",
+                tag: "Engenharia de Prompt",
+                desc: "Motor de inteligência capaz de consolidar ecossistemas de dados processando +390k logs para extração de avatares e mecanismos de vendas via API Gemini.",
+                icon: "fa-solid fa-microchip",
+                stats: "390.000+ LOGS PROCESSADOS"
+            },
+            {
+                id: 2,
+                title: "Suíte Auditores Jurídicos",
+                category: "IA & Big Data",
+                tag: "Legal Tech & Compliance",
+                desc: "4 Softwares de Auditoria (Cível, Criminal, Trabalho, Família) com 'Escudos Anti-Alucinação' via Regex. Garantia de precisão documental.",
+                icon: "fa-solid fa-scale-balanced",
+                stats: "INTEGRAÇÃO API GEMINI"
+            },
+            {
+                id: 3,
+                title: "JurisVision OAB",
+                category: "IA & Big Data",
+                tag: "Data Analytics",
+                desc: "Ferramenta de predição analítica com motor scanner para +750 questões, gerando radares de recorrência e atualizações em tempo real via GitHub.",
+                icon: "fa-solid fa-chart-pie",
+                stats: "ESTATÍSTICA PREDITIVA"
+            },
+            {
+                id: 20,
+                title: "Gemini TTS Splitter",
+                category: "IA & Big Data",
+                tag: "IA & Síntese de Voz",
+                desc: "Ferramenta de conversão Text-to-Speech (TTS) em lote, integrada com a API Gemini 2.5. Processamento inteligente de roteiros e conversão nativa de áudio PCM16 para WAV.",
+                icon: "fa-solid fa-microphone-lines",
+                stats: "PROCESSAMENTO DE ÁUDIO"
+            },
+            {
+                id: 25,
+                title: "Nexus AI Command Center",
+                category: "IA & Big Data",
+                tag: "Automação & SO",
+                desc: "Sistema Operacional autônomo. Orquestração de agentes via Sentinel Core rodando em background e monitoramento tático em tempo real através do Performance Dashboard.",
+                icon: "fa-solid fa-network-wired",
+                stats: "AGENTES AUTÔNOMOS"
+            },
+
+            // ==========================================
+            // CATEGORIA: ERP & GESTÃO
+            // ==========================================
+            {
+                id: 4,
+                title: "MarketMaster ERP",
+                category: "ERP & Gestão",
+                tag: "Varejo & Vendas",
+                desc: "Sistema de gestão integrada para o varejo com controle de estoque, frente de caixa (PDV) e gestão de níveis de acesso para operadores.",
+                icon: "fa-solid fa-store",
+            },
+            {
+                id: 5,
+                title: "AutoDrive Enterprise",
+                category: "ERP & Gestão",
+                tag: "Setor Automotivo",
+                desc: "Plataforma 360º para revenda de veículos, com controle de documentação (IPVA, multas), fluxo de caixa e gestão de frota.",
+                icon: "fa-solid fa-car",
+            },
+            {
+                id: 6,
+                title: "AutoFix Manager",
+                category: "ERP & Gestão",
+                tag: "Oficinas Mecânicas",
+                desc: "Gestão completa de Ordens de Serviço (OS), orçamentos de peças, mão de obra e aprovação digital de clientes.",
+                icon: "fa-solid fa-wrench",
+            },
+            {
+                id: 7,
+                title: "CondoMaster",
+                category: "ERP & Gestão",
+                tag: "Gestão Condominial",
+                desc: "Administração de condomínios com emissão de Editais, Certidões Negativas (CND), enquetes e comunicados para moradores.",
+                icon: "fa-regular fa-building",
+            },
+            {
+                id: 8,
+                title: "Gestão Imobiliária Master",
+                category: "ERP & Gestão",
+                tag: "Real Estate",
+                desc: "Administração de casas e imóveis, controle de contratos de aluguel, vistorias e balanços financeiros mensais.",
+                icon: "fa-solid fa-house-chimney",
+            },
+            {
+                id: 9,
+                title: "PetMaster Pro",
+                category: "ERP & Gestão",
+                tag: "Serviços Pet",
+                desc: "Sistema definitivo para Pet Shops, incluindo controle de banho, tosa, agendamentos veterinários e faturamento.",
+                icon: "fa-solid fa-paw",
+            },
+            {
+                id: 10,
+                title: "SecureGuard",
+                category: "ERP & Gestão",
+                tag: "Segurança de Eventos",
+                desc: "Gestão operacional de equipes de segurança, controle de incidentes e monitoramento de público em grandes eventos.",
+                icon: "fa-solid fa-user-shield",
+            },
+            {
+                id: 11,
+                title: "Conciliare",
+                category: "ERP & Gestão",
+                tag: "Legal Operations",
+                desc: "Sistema integrado para escritórios de advocacia. Gestão de prazos, audiências e dashboard de produtividade da equipe.",
+                icon: "fa-solid fa-handshake",
+            },
+            {
+                id: 12,
+                title: "SoftGestão Admin",
+                category: "ERP & Gestão",
+                tag: "Core Administrativo",
+                desc: "Painel central para geração automatizada de minutas e contratos, integrado aos módulos operacionais.",
+                icon: "fa-solid fa-server",
+            },
+            {
+                id: 17,
+                title: "Parking Pro",
+                category: "ERP & Gestão",
+                tag: "Mobilidade & IA Visual",
+                desc: "Gestão de Estacionamento e Lava-rápido. Integração com tecnologia OCR (Tesseract.js) para leitura automática de placas e controle de entrada/saída.",
+                icon: "fa-solid fa-square-parking",
+            },
+            {
+                id: 18,
+                title: "Reforma Master",
+                category: "ERP & Gestão",
+                tag: "Construção Civil",
+                desc: "Plataforma de administração de obras. Controle rigoroso de orçamentos, gestão de fornecedores e acompanhamento financeiro de projetos estruturais.",
+                icon: "fa-solid fa-helmet-safety",
+            },
+            {
+                id: 19,
+                title: "Personal Master",
+                category: "ERP & Gestão",
+                tag: "Saúde & Fitness",
+                desc: "Progressive Web App (PWA) focada na gestão para Personal Trainers. Inclui controle de alunos, prescrição de treinos e gestão financeira, preparada para infraestrutura cloud (Firebase).",
+                icon: "fa-solid fa-dumbbell",
+            },
+
+            // ==========================================
+            // CATEGORIA: GROWTH & UX
+            // ==========================================
+            {
+                id: 26,
+                title: "WebCut Studio",
+                category: "Growth & UX",
+                tag: "Editor de Vídeo Web",
+                desc: "Editor de vídeo diretamente no navegador, com interface intuitiva estilo CapCut. Linha do tempo interativa, gestão de cortes, transições e renderização otimizada em Canvas.",
+                icon: "fa-solid fa-photo-film",
+            },
+            {
+                id: 13,
+                title: "ThumbMaster AI",
+                category: "Growth & UX",
+                tag: "Laboratório de Cliques",
+                desc: "Ferramenta de BI e Growth Hacking para análise de CTR e otimização de miniaturas (thumbnails) e criativos.",
+                icon: "fa-solid fa-image",
+            },
+            {
+                id: 14,
+                title: "Channel Hunter Pro",
+                category: "Growth & UX",
+                tag: "Prospecção de Nichos",
+                desc: "Extrator de dados do YouTube via API para identificar canais em ascensão, métricas de visualização e apoio à decisão.",
+                icon: "fa-solid fa-crosshairs",
+            },
+            {
+                id: 15,
+                title: "Oráculo AI",
+                category: "Growth & UX",
+                tag: "UX Imersiva",
+                desc: "Aplicação de Astrologia & Tarot focada em retenção de usuários, utilizando design emocional e geração de relatórios personalizados.",
+                icon: "fa-solid fa-moon",
+            },
+            {
+                id: 16,
+                title: "Kabbalah Script",
+                category: "Growth & UX",
+                tag: "Geração de Conteúdo",
+                desc: "Gerador de roteiros cabalísticos com tradução multi-idiomas em tempo real, aliando interface responsiva e lógica de texto.",
+                icon: "fa-solid fa-scroll",
+            },
+            {
+                id: 21,
+                title: "SoftGestão Auto LPs",
+                category: "Growth & UX",
+                tag: "Landing Pages & Conversão",
+                desc: "Funil de Vendas focado em B2B. Páginas de alta conversão para o ecossistema SoftGestão, orientadas ao agendamento de demonstrações e captação de leads qualificados.",
+                icon: "fa-solid fa-rocket",
+            },
+            {
+                id: 22,
+                title: "SoftGestão Ensino LPs",
+                category: "Growth & UX",
+                tag: "Landing Pages & Conversão",
+                desc: "Funil de captação B2B para o setor da Educação. Páginas otimizadas para instituições de ensino e escolas, focadas no agendamento de demonstrações.",
+                icon: "fa-solid fa-graduation-cap",
+            },
+            {
+                id: 23,
+                title: "SoftGestão Food LPs",
+                category: "Growth & UX",
+                tag: "Landing Pages & Conversão",
+                desc: "Arquitetura persuasiva para restaurantes, bares e delivery. Landing pages desenhadas para escalar a captação de leads e a digitalização do setor alimentício.",
+                icon: "fa-solid fa-utensils",
+            },
+            {
+                id: 24,
+                title: "SoftGestão Service LPs",
+                category: "Growth & UX",
+                tag: "Landing Pages & Conversão",
+                desc: "Páginas de alta conversão orientadas a prestadores de serviços e técnicos. Foco na geração de orçamentos e agendamento rápido de contato comercial.",
+                icon: "fa-solid fa-screwdriver-wrench",
+            }
+        ];
+
+        // Componente do Cartão de Projeto
+        const ProjectCard = ({ project }) => (
+            <div className="glass p-6 md:p-8 rounded-3xl hover:border-sky-500/50 transition-all duration-300 group flex flex-col h-full animate-fade">
+                <div className="text-sky-400 text-3xl mb-4"><i className={project.icon}></i></div>
+                <span className="text-[10px] uppercase tracking-[2px] text-sky-500 font-bold mb-2">{project.tag}</span>
+                <h3 className="text-xl md:text-2xl font-black mt-1 mb-3 group-hover:text-sky-400 transition-colors">{project.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">{project.desc}</p>
+                {project.stats && (
+                    <div className="bg-sky-500/10 border border-sky-500/20 p-3 rounded-xl text-sky-400 font-mono text-xs text-center font-bold mt-auto">
+                        {project.stats}
+                    </div>
+                )}
+            </div>
+        );
+
+        const App = () => {
+            const [activeFilter, setActiveFilter] = useState("Todos");
+            const [showLetter, setShowLetter] = useState(false);
+            
+            const categories = ["Todos", "IA & Big Data", "ERP & Gestão", "Growth & UX"];
+
+            const filteredProjects = useMemo(() => {
+                return activeFilter === "Todos" 
+                    ? allProjects 
+                    : allProjects.filter(p => p.category === activeFilter);
+            }, [activeFilter]);
+
+            return (
+                <div className="min-h-screen relative">
+                    <div className="hero-glow"></div>
+                    
+                    {/* Barra de Navegação */}
+                    <nav className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center relative z-10">
+                        <div className="text-xl font-black tracking-tighter">ADRIANA<span className="text-sky-500">.</span>TECH</div>
+                        <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                            <a href="#portfolio" className="hover:text-white transition-colors">Portfólio</a>
+                            <a href="#experiencia" className="hover:text-white transition-colors">Stack</a>
+                            <a href="#formacao" className="hover:text-white transition-colors">Formação</a>
+                        </div>
+                        <a href="https://wa.me/5511977278197" target="_blank" className="bg-white text-black px-6 py-2 rounded-full text-xs font-black uppercase hover:bg-sky-500 hover:text-white transition-all">Contato</a>
+                    </nav>
+
+                    {/* Seção Hero */}
+                    <header className="max-w-4xl mx-auto px-6 pt-16 pb-24 text-center relative z-10">
+                        <h1 className="text-5xl md:text-7xl font-black leading-tight mb-8">
+                            Não faço apenas gestão de produto. <br className="hidden md:block"/>Eu <span className="gradient-text">construo soluções.</span>
+                        </h1>
+                        <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-3xl mx-auto">
+                            Product Manager & AI Solutions Architect especializada em transformar dados massivos e processos operacionais complexos em um ecossistema de ferramentas de alta performance.
+                        </p>
+                        
+                        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                            <button 
+                                onClick={() => setShowLetter(true)} 
+                                className="bg-sky-600 hover:bg-sky-500 text-white px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all shadow-lg shadow-sky-500/25 flex items-center justify-center gap-3"
+                            >
+                                <i className="fa-solid fa-envelope-open-text text-xl"></i> Carta de Apresentação
+                            </button>
+                            <a 
+                                href="#portfolio" 
+                                className="glass hover:bg-slate-800 text-white px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3"
+                            >
+                                <i className="fa-solid fa-layer-group text-xl"></i> Explorar Projetos
+                            </a>
+                        </div>
+                    </header>
+
+                    {/* Seção de Portfólio */}
+                    <section id="portfolio" className="max-w-7xl mx-auto px-6 py-10 relative z-10">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl md:text-4xl font-black mb-4">Meu <span className="text-sky-500">Ecossistema</span> ({allProjects.length} Projetos)</h2>
+                            <p className="text-slate-400 text-sm max-w-2xl mx-auto mb-10">
+                                Explore os sistemas que desenhei, prototipei e desenvolvi (Python, React, APIs Generativas). Desde auditores jurídicos até robustos ERPs e funis de conversão em vendas.
+                            </p>
+                            
+                            <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+                                {categories.map(cat => (
+                                    <button 
+                                        key={cat}
+                                        onClick={() => setActiveFilter(cat)}
+                                        className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                                            activeFilter === cat 
+                                            ? "bg-sky-500 text-white shadow-lg shadow-sky-500/25" 
+                                            : "glass text-slate-400 hover:text-white hover:bg-slate-800"
+                                        }`}
+                                    >
+                                        {cat}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {filteredProjects.map(project => (
+                                <ProjectCard key={project.id} project={project} />
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* SEÇÃO: Experiência e Tech Stack */}
+                    <section id="experiencia" className="max-w-7xl mx-auto px-6 py-20 relative z-10 border-t border-slate-800/50 mt-10">
+                        <div className="flex flex-col md:flex-row gap-16 items-center">
+                            <div className="w-full md:w-1/2">
+                                <h2 className="text-3xl md:text-4xl font-black mb-6">Stack <span className="text-sky-500">Tecnológico</span> & Domínio</h2>
+                                <p className="text-slate-400 leading-relaxed mb-8">
+                                    Minha base técnica permite criar produtos fim-a-fim, desde o processamento de dados no back-end até a entrega de uma interface imersiva no front-end.
+                                </p>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="glass p-4 rounded-2xl flex items-center gap-4 group">
+                                        <i className="fa-brands fa-python text-3xl text-sky-400 group-hover:scale-110 transition-transform"></i>
+                                        <div><h4 className="font-bold text-white text-sm">Python</h4><p className="text-[10px] text-slate-500 uppercase tracking-widest">Lógica & Big Data</p></div>
+                                    </div>
+                                    <div className="glass p-4 rounded-2xl flex items-center gap-4 group">
+                                        <i className="fa-brands fa-react text-3xl text-sky-400 group-hover:scale-110 transition-transform"></i>
+                                        <div><h4 className="font-bold text-white text-sm">React.js</h4><p className="text-[10px] text-slate-500 uppercase tracking-widest">Front-end Imersivo</p></div>
+                                    </div>
+                                    <div className="glass p-4 rounded-2xl flex items-center gap-4 group">
+                                        <i className="fa-solid fa-brain text-3xl text-sky-400 group-hover:scale-110 transition-transform"></i>
+                                        <div><h4 className="font-bold text-white text-sm">LLMs & APIs</h4><p className="text-[10px] text-slate-500 uppercase tracking-widest">Gemini / Prompt Eng</p></div>
+                                    </div>
+                                    <div className="glass p-4 rounded-2xl flex items-center gap-4 group">
+                                        <i className="fa-brands fa-github text-3xl text-sky-400 group-hover:scale-110 transition-transform"></i>
+                                        <div><h4 className="font-bold text-white text-sm">Git & DevOps</h4><p className="text-[10px] text-slate-500 uppercase tracking-widest">Deploy & Versionamento</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="w-full md:w-1/2">
+                                <div className="glass p-8 md:p-10 rounded-3xl relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                                    <span className="text-sky-500 text-xs font-bold uppercase tracking-widest mb-2 block">Trajetória Executiva</span>
+                                    <h3 className="text-2xl font-black text-white mb-6">Lead Product Developer <br/><span className="text-slate-400 text-lg">@ SoftGestão</span></h3>
+                                    <ul className="space-y-5">
+                                        <li className="flex gap-4 items-start">
+                                            <i className="fa-solid fa-check-circle text-sky-500 mt-1"></i>
+                                            <p className="text-sm text-slate-300">Liderança técnica na arquitetura de ecossistemas ERP, otimizando fluxos de varejo, automotivo e jurídico.</p>
+                                        </li>
+                                        <li className="flex gap-4 items-start">
+                                            <i className="fa-solid fa-check-circle text-sky-500 mt-1"></i>
+                                            <p className="text-sm text-slate-300">Desenvolvimento de motores analíticos (Python/GenAI) processando <strong>mais de 390.000 logs</strong> para extração tática de mercado.</p>
+                                        </li>
+                                        <li className="flex gap-4 items-start">
+                                            <i className="fa-solid fa-check-circle text-sky-500 mt-1"></i>
+                                            <p className="text-sm text-slate-300">Construção ágil de MVPs focados em UX e integração de agentes autônomos para automação comercial.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* NOVA SEÇÃO: Formação Acadêmica & Especializações */}
+                    <section id="formacao" className="max-w-7xl mx-auto px-6 py-20 relative z-10 border-t border-slate-800/50 mt-10">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl md:text-4xl font-black mb-4">Formação & <span className="text-sky-500">Especializações</span></h2>
+                            <p className="text-slate-400 text-sm max-w-2xl mx-auto">
+                                Cursos e certificações que fundamentam a minha capacidade técnica em Produto, Engenharia de Software e Inteligência Artificial.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="glass p-6 rounded-2xl border-l-4 border-l-sky-500">
+                                <h3 className="font-bold text-white text-lg mb-2">Análise e Desenvolvimento de Sistemas (ADS)</h3>
+                                <p className="text-slate-400 text-sm mb-3">Base sólida em Arquitetura de Software, Algoritmos e Engenharia de Requisitos.</p>
+                            </div>
+                            <div className="glass p-6 rounded-2xl border-l-4 border-l-sky-500">
+                                <h3 className="font-bold text-white text-lg mb-2">Engenharia de Prompt e IA</h3>
+                                <p className="text-slate-400 text-sm mb-3">Integração de LLMs (Gemini 2.5), tratamento de logs massivos e automação estratégica.</p>
+                            </div>
+                            <div className="glass p-6 rounded-2xl border-l-4 border-l-sky-500">
+                                <h3 className="font-bold text-white text-lg mb-2">Produto Digital (PM / PO)</h3>
+                                <p className="text-slate-400 text-sm mb-3">Product Management, Product Owner, Gestão de Backlog, Roadmap e Métricas de Sucesso.</p>
+                            </div>
+                            <div className="glass p-6 rounded-2xl border-l-4 border-l-slate-600">
+                                <h3 className="font-bold text-white text-lg mb-2">Desenvolvimento Web Full Stack</h3>
+                                <p className="text-slate-400 text-sm mb-3">Programação moderna com HTML5, CSS3, JavaScript, React e Tailwind CSS.</p>
+                            </div>
+                            <div className="glass p-6 rounded-2xl border-l-4 border-l-slate-600">
+                                <h3 className="font-bold text-white text-lg mb-2">Dados e BI (Business Intelligence)</h3>
+                                <p className="text-slate-400 text-sm mb-3">Data Analytics, SQL e Visualização de Dados orientada para tomada de decisão.</p>
+                            </div>
+                            <div className="glass p-6 rounded-2xl border-l-4 border-l-slate-600">
+                                <h3 className="font-bold text-white text-lg mb-2">Compliance e Governança</h3>
+                                <p className="text-slate-400 text-sm mb-3">Gestão de Riscos, adequação à LGPD e segurança de dados em ambientes digitais.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Rodapé */}
+                    <footer className="max-w-7xl mx-auto px-6 py-12 mt-10 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+                        <div className="text-center md:text-left">
+                            <div className="text-sm text-slate-500 italic mb-2">"Pronta para escalar o próximo grande produto."</div>
+                            <p className="text-xs text-slate-400 font-semibold"><i className="fa-solid fa-location-dot mr-2 text-sky-500"></i>Taboão da Serra - SP, Brasil</p>
+                        </div>
+                        <div className="flex gap-6 text-xl">
+                            <a href="https://www.linkedin.com/in/adriana-sousa-tech/" target="_blank" aria-label="Acessar LinkedIn" className="text-slate-400 hover:text-sky-400 transition-colors"><i className="fa-brands fa-linkedin"></i></a>
+                            <a href="#" aria-label="Acessar GitHub" className="text-slate-400 hover:text-sky-400 transition-colors"><i className="fa-brands fa-github"></i></a>
+                            <a href="mailto:adriana.mktt@gmail.com" aria-label="Enviar Email" className="text-slate-400 hover:text-sky-400 transition-colors"><i className="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </footer>
+
+                    {/* Modal da Carta de Apresentação */}
+                    {showLetter && (
+                        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 md:p-6 opacity-100 transition-opacity">
+                            <div className="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl relative animate-fade">
+                                <button onClick={() => setShowLetter(false)} aria-label="Fechar Carta de Apresentação" className="absolute top-6 right-6 text-slate-400 hover:text-white text-2xl transition-colors">
+                                    <i className="fa-solid fa-xmark"></i>
+                                </button>
+                                <div className="p-8 md:p-12 text-slate-300 space-y-6">
+                                    <h2 className="text-3xl font-black text-white mb-8 border-b border-slate-800 pb-4">Carta de Apresentação</h2>
+                                    
+                                    <p className="text-lg text-slate-200 font-semibold">À equipe de seleção,</p>
+                                    
+                                    <p className="leading-relaxed">Muitas organizações enfrentam hoje o desafio de transformar grandes volumes de dados e processos operacionais complexos em ferramentas digitais que sejam, ao mesmo tempo, potentes e intuitivas. Minha trajetória profissional é focada exatamente nesta interseção: sou uma especialista em produto com sólida base técnica em <strong className="text-sky-400">Python e React</strong>, dedicada a construir soluções que unem Inteligência Artificial, segurança de dados e alta performance.</p>
+                                    
+                                    <p className="leading-relaxed">Ao longo do último ano, liderei o desenvolvimento de um ecossistema de soluções sob a marca <strong className="text-white">softgestao</strong>, onde atuei em todo o ciclo de vida do produto — desde a descoberta (Discovery) e compreensão da dor do cliente até o deploy final. Entre os marcos do meu portfólio, destaco:</p>
+                                    
+                                    <ul className="space-y-4 pl-4 md:pl-8 py-2">
+                                        <li className="relative"><i className="fa-solid fa-arrow-right text-sky-500 absolute -left-6 top-1"></i><strong className="text-white">Arquitetura de IA e Big Data:</strong> Concepção do motor <em>The Market Architect v13.1</em>, capaz de processar bases massivas de <strong>+390 mil logs de dados</strong> para extrair padrões táticos de mercado, utilizando a API do Gemini 2.5 Flash.</li>
+                                        <li className="relative"><i className="fa-solid fa-arrow-right text-sky-500 absolute -left-6 top-1"></i><strong className="text-white">Engenharia Jurídica e Compliance:</strong> Desenvolvimento de auditores inteligentes especializados (Cível, Criminal, Trabalhista e Família), onde implementei <strong>"Escudos Anti-Alucinação" via Regex</strong>, garantindo precisão absoluta e conformidade com a LGPD em relatórios estratégicos.</li>
+                                        <li className="relative"><i className="fa-solid fa-arrow-right text-sky-500 absolute -left-6 top-1"></i><strong className="text-white">Desenvolvimento Ágil de ERPs:</strong> Criação de sistemas de gestão verticalizados para os setores de varejo, automotivo e serviços. Utilizando ferramentas de prototipagem rápida e frameworks modernos como <strong>Tailwind CSS</strong>, reduzi o tempo de entrega de MVPs funcionais de meses para poucos dias.</li>
+                                    </ul>
+                                    
+                                    <p className="leading-relaxed">Minha especialização técnica em Análise e Desenvolvimento de Sistemas permite-me transitar com extrema facilidade entre o domínio do negócio e o desenvolvimento tecnológico. Tenho facilidade em traduzir necessidades abstratas em backlogs estruturados, garantindo que o desenvolvimento esteja sempre alinhado ao retorno sobre o investimento (ROI) e à experiência do usuário (UX).</p>
+                                    
+                                    <p className="leading-relaxed">Estou em busca de novos desafios onde possa aplicar minha mentalidade de "dona do produto" para acelerar roadmaps tecnológicos e implementar soluções que resolvam gargalos operacionais reais.</p>
+                                    
+                                    <p className="leading-relaxed">Agradeço o tempo dedicado à leitura e coloco-me à disposição para uma conversa, onde poderei realizar uma demonstração técnica dos sistemas e motores de inteligência que desenvolvi.</p>
+                                    
+                                    <div className="pt-8 mt-8 border-t border-slate-800">
+                                        <p className="font-black text-white text-xl">Adriana Mendes da Cruz Sousa</p>
+                                        <p className="text-sky-500 font-bold text-sm mt-1 uppercase tracking-widest">Product Manager & AI Solutions Architect</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
