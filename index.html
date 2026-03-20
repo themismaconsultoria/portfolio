@@ -10,7 +10,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Adriana Sousa | Product & AI Engineer">
     <meta property="og:description" content="Especialista em transformar dados massivos e processos operacionais complexos em produtos digitais de alta performance.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop">
+    <!-- Link atualizado com o seu repositório real -->
+    <meta property="og:image" content="https://themismaconsultoria.github.io/portfolio/perfil.jpg">
     <meta property="og:url" content="https://www.linkedin.com/in/adriana-sousa-tech/">
 
     <title>Adriana Sousa | Product & AI Engineer</title>
@@ -321,28 +322,43 @@
                         <a href="https://wa.me/5511977278197" target="_blank" className="bg-white text-black px-6 py-2 rounded-full text-xs font-black uppercase hover:bg-sky-500 hover:text-white transition-all">Contato</a>
                     </nav>
 
-                    {/* Seção Hero */}
-                    <header className="max-w-4xl mx-auto px-6 pt-16 pb-24 text-center relative z-10">
-                        <h1 className="text-5xl md:text-7xl font-black leading-tight mb-8">
-                            Não faço apenas gestão de produto. <br className="hidden md:block"/>Eu <span className="gradient-text">construo soluções.</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-3xl mx-auto">
-                            Product Manager & AI Solutions Architect especializada em transformar dados massivos e processos operacionais complexos em um ecossistema de ferramentas de alta performance.
-                        </p>
+                    {/* Seção Hero COM A FOTO */}
+                    <header className="max-w-6xl mx-auto px-6 pt-12 pb-24 relative z-10 flex flex-col-reverse md:flex-row items-center gap-12 text-center md:text-left">
+                        <div className="w-full md:w-3/5">
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-8">
+                                Não faço apenas gestão de produto. <br className="hidden md:block"/>Eu <span className="gradient-text">construo soluções.</span>
+                            </h1>
+                            <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto md:mx-0">
+                                Product Manager & AI Solutions Architect especializada em transformar dados massivos e processos operacionais complexos em um ecossistema de ferramentas de alta performance.
+                            </p>
+                            
+                            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-8">
+                                <button 
+                                    onClick={() => setShowLetter(true)} 
+                                    className="bg-sky-600 hover:bg-sky-500 text-white px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all shadow-lg shadow-sky-500/25 flex items-center justify-center gap-3"
+                                >
+                                    <i className="fa-solid fa-envelope-open-text text-xl"></i> Carta de Apresentação
+                                </button>
+                                <a 
+                                    href="#portfolio" 
+                                    className="glass hover:bg-slate-800 text-white px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3"
+                                >
+                                    <i className="fa-solid fa-layer-group text-xl"></i> Explorar Projetos
+                                </a>
+                            </div>
+                        </div>
                         
-                        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                            <button 
-                                onClick={() => setShowLetter(true)} 
-                                className="bg-sky-600 hover:bg-sky-500 text-white px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all shadow-lg shadow-sky-500/25 flex items-center justify-center gap-3"
-                            >
-                                <i className="fa-solid fa-envelope-open-text text-xl"></i> Carta de Apresentação
-                            </button>
-                            <a 
-                                href="#portfolio" 
-                                className="glass hover:bg-slate-800 text-white px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3"
-                            >
-                                <i className="fa-solid fa-layer-group text-xl"></i> Explorar Projetos
-                            </a>
+                        <div className="w-full md:w-2/5 flex justify-center md:justify-end">
+                            <div className="relative group">
+                                {/* Efeito de brilho atrás da foto */}
+                                <div className="absolute inset-0 bg-sky-500 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                                {/* SUA FOTO AQUI */}
+                                <img 
+                                    src="./perfil.jpg" 
+                                    alt="Foto de Adriana Sousa" 
+                                    className="w-56 h-56 md:w-80 md:h-80 object-cover rounded-full border-4 border-slate-800 shadow-2xl relative z-10 transform group-hover:scale-105 transition-transform duration-500"
+                                />
+                            </div>
                         </div>
                     </header>
 
@@ -474,7 +490,7 @@
                         </div>
                         <div className="flex gap-6 text-xl">
                             <a href="https://www.linkedin.com/in/adriana-sousa-tech/" target="_blank" aria-label="Acessar LinkedIn" className="text-slate-400 hover:text-sky-400 transition-colors"><i className="fa-brands fa-linkedin"></i></a>
-                            <a href="#" aria-label="Acessar GitHub" className="text-slate-400 hover:text-sky-400 transition-colors"><i className="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/themismaconsultoria" target="_blank" aria-label="Acessar GitHub" className="text-slate-400 hover:text-sky-400 transition-colors"><i className="fa-brands fa-github"></i></a>
                             <a href="mailto:adriana.mktt@gmail.com" aria-label="Enviar Email" className="text-slate-400 hover:text-sky-400 transition-colors"><i className="fa-solid fa-envelope"></i></a>
                         </div>
                     </footer>
